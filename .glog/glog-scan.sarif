@@ -55,20 +55,42 @@
             },
             {
               "id": "5deaa7dd-e6d7-3457-84d7-56041ad1022a",
-              "name": "resources.rules.python.dangerous-system-call",
+              "name": "resources.rules.python.insecure-os-exec-use",
               "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.python.dangerous-system-call"
+                "text": "Opengrep Finding: resources.rules.python.insecure-os-exec-use"
               },
               "fullDescription": {
-                "text": "Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability."
+                "text": "The Python 'os' execution functions are not secure against maliciously constructed input"
               },
               "defaultConfiguration": {
                 "enabled": true,
                 "level": "warning"
               },
               "help": {
-                "text": "Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+                "text": "The Python 'os' execution functions are not secure against maliciously constructed input\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "The Python 'os' execution functions are not secure against maliciously constructed input\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
+              "id": "760a3b68-0199-3e22-8844-50074b9fc455",
+              "name": "python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute"
+              },
+              "fullDescription": {
+                "text": "User-controlled data from a request is passed to 'execute()'. This could lead to a SQL injection and therefore protected information could be leaked. Instead, use django's QuerySets, which are built with query parameterization and therefore not vulnerable to sql injection. For example, you could use `Entry.objects.filter(date=2006)`."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute",
+              "help": {
+                "text": "User-controlled data from a request is passed to 'execute()'. This could lead to a SQL injection and therefore protected information could be leaked. Instead, use django's QuerySets, which are built with query parameterization and therefore not vulnerable to sql injection. For example, you could use `Entry.objects.filter(date=2006)`.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "User-controlled data from a request is passed to 'execute()'. This could lead to a SQL injection and therefore protected information could be leaked. Instead, use django's QuerySets, which are built with query parameterization and therefore not vulnerable to sql injection. For example, you could use `Entry.objects.filter(date=2006)`.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute)\n - [https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection](https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection)\n"
               },
               "properties": {
                 "precision": "very-high"
@@ -117,28 +139,6 @@
               }
             },
             {
-              "id": "760a3b68-0199-3e22-8844-50074b9fc455",
-              "name": "python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute",
-              "shortDescription": {
-                "text": "Opengrep Finding: python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute"
-              },
-              "fullDescription": {
-                "text": "User-controlled data from a request is passed to 'execute()'. This could lead to a SQL injection and therefore protected information could be leaked. Instead, use django's QuerySets, which are built with query parameterization and therefore not vulnerable to sql injection. For example, you could use `Entry.objects.filter(date=2006)`."
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "helpUri": "https://semgrep.dev/r/python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute",
-              "help": {
-                "text": "User-controlled data from a request is passed to 'execute()'. This could lead to a SQL injection and therefore protected information could be leaked. Instead, use django's QuerySets, which are built with query parameterization and therefore not vulnerable to sql injection. For example, you could use `Entry.objects.filter(date=2006)`.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "User-controlled data from a request is passed to 'execute()'. This could lead to a SQL injection and therefore protected information could be leaked. Instead, use django's QuerySets, which are built with query parameterization and therefore not vulnerable to sql injection. For example, you could use `Entry.objects.filter(date=2006)`.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.injection.sql.sql-injection-using-db-cursor-execute.sql-injection-db-cursor-execute)\n - [https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection](https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
               "id": "f4085cc7-4ff7-3814-9ded-e38188e7e80b",
               "name": "python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
               "shortDescription": {
@@ -155,6 +155,28 @@
               "help": {
                 "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
                 "markdown": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid)\n - [https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data](https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
+              "id": "aee6b29e-7c2f-30c9-bf13-14a4bd19b6d5",
+              "name": "python.django.security.injection.tainted-sql-string.tainted-sql-string",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.django.security.injection.tainted-sql-string.tainted-sql-string"
+              },
+              "fullDescription": {
+                "text": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "error"
+              },
+              "helpUri": "https://semgrep.dev/r/python.django.security.injection.tainted-sql-string.tainted-sql-string",
+              "help": {
+                "text": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.injection.tainted-sql-string.tainted-sql-string)\n - [https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection](https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection)\n"
               },
               "properties": {
                 "precision": "very-high"
@@ -203,28 +225,6 @@
               }
             },
             {
-              "id": "aee6b29e-7c2f-30c9-bf13-14a4bd19b6d5",
-              "name": "python.django.security.injection.tainted-sql-string.tainted-sql-string",
-              "shortDescription": {
-                "text": "Opengrep Finding: python.django.security.injection.tainted-sql-string.tainted-sql-string"
-              },
-              "fullDescription": {
-                "text": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries."
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "error"
-              },
-              "helpUri": "https://semgrep.dev/r/python.django.security.injection.tainted-sql-string.tainted-sql-string",
-              "help": {
-                "text": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.injection.tainted-sql-string.tainted-sql-string)\n - [https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection](https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
               "id": "ff98e7de-2859-38b7-a9c3-0f33c708aa09",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
@@ -267,7 +267,7 @@
               }
             },
             {
-              "id": "9552c3dd-51c2-3ecb-97f4-1b4235797331",
+              "id": "24e10189-fbc8-3357-8415-d2082fcc0132",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
                 "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
@@ -288,7 +288,7 @@
               }
             },
             {
-              "id": "24e10189-fbc8-3357-8415-d2082fcc0132",
+              "id": "9552c3dd-51c2-3ecb-97f4-1b4235797331",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
                 "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
@@ -351,6 +351,48 @@
               }
             },
             {
+              "id": "482409c2-3748-388e-b6dc-ba4cc1ab884d",
+              "name": "resources.rules.python.access-foreign-keys",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.python.access-foreign-keys"
+              },
+              "fullDescription": {
+                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
+              "id": "1dbd4dd2-5efa-3f5d-a3e5-cb9eb76794ef",
+              "name": "resources.rules.python.missing-ratelimit",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
+              },
+              "fullDescription": {
+                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
               "id": "722bf57d-df92-3ffb-8159-bd271ad5437a",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
@@ -393,21 +435,43 @@
               }
             },
             {
-              "id": "482409c2-3748-388e-b6dc-ba4cc1ab884d",
-              "name": "resources.rules.python.access-foreign-keys",
+              "id": "8f1b728f-0a34-3560-8f0c-b0d4cb1631bc",
+              "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.python.access-foreign-keys"
+                "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
               },
               "fullDescription": {
-                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query."
+                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
               },
               "defaultConfiguration": {
                 "enabled": true,
                 "level": "warning"
               },
               "help": {
-                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
+              "id": "0d2bd611-c255-3e14-aa92-70408e01d982",
+              "name": "python.django.security.injection.open-redirect.open-redirect",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.django.security.injection.open-redirect.open-redirect"
+              },
+              "fullDescription": {
+                "text": "Data from request ($DATA) is passed to redirect(). This is an open redirect and could be exploited. Ensure you are redirecting to safe URLs by using django.utils.http.is_safe_url(). See https://cwe.mitre.org/data/definitions/601.html for more information."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.django.security.injection.open-redirect.open-redirect",
+              "help": {
+                "text": "Data from request ($DATA) is passed to redirect(). This is an open redirect and could be exploited. Ensure you are redirecting to safe URLs by using django.utils.http.is_safe_url(). See https://cwe.mitre.org/data/definitions/601.html for more information.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Data from request ($DATA) is passed to redirect(). This is an open redirect and could be exploited. Ensure you are redirecting to safe URLs by using django.utils.http.is_safe_url(). See https://cwe.mitre.org/data/definitions/601.html for more information.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.injection.open-redirect.open-redirect)\n - [https://www.djm.org.uk/posts/djangos-little-protections-word-redirect-dangers/](https://www.djm.org.uk/posts/djangos-little-protections-word-redirect-dangers/)\n - [https://github.com/django/django/blob/d1b7bd030b1db111e1a3505b1fc029ab964382cc/django/utils/http.py#L231](https://github.com/django/django/blob/d1b7bd030b1db111e1a3505b1fc029ab964382cc/django/utils/http.py#L231)\n"
               },
               "properties": {
                 "precision": "very-high"
@@ -435,92 +499,7 @@
               }
             },
             {
-              "id": "8f1b728f-0a34-3560-8f0c-b0d4cb1631bc",
-              "name": "resources.rules.python.missing-ratelimit",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
-              },
-              "fullDescription": {
-                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
-              "id": "1dbd4dd2-5efa-3f5d-a3e5-cb9eb76794ef",
-              "name": "resources.rules.python.missing-ratelimit",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
-              },
-              "fullDescription": {
-                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
-              "id": "62f3acb3-e66f-34e4-99e1-98aa0bb30f8a",
-              "name": "python.django.security.injection.open-redirect.open-redirect",
-              "shortDescription": {
-                "text": "Opengrep Finding: python.django.security.injection.open-redirect.open-redirect"
-              },
-              "fullDescription": {
-                "text": "Data from request ($DATA) is passed to redirect(). This is an open redirect and could be exploited. Ensure you are redirecting to safe URLs by using django.utils.http.is_safe_url(). See https://cwe.mitre.org/data/definitions/601.html for more information."
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "helpUri": "https://semgrep.dev/r/python.django.security.injection.open-redirect.open-redirect",
-              "help": {
-                "text": "Data from request ($DATA) is passed to redirect(). This is an open redirect and could be exploited. Ensure you are redirecting to safe URLs by using django.utils.http.is_safe_url(). See https://cwe.mitre.org/data/definitions/601.html for more information.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Data from request ($DATA) is passed to redirect(). This is an open redirect and could be exploited. Ensure you are redirecting to safe URLs by using django.utils.http.is_safe_url(). See https://cwe.mitre.org/data/definitions/601.html for more information.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.injection.open-redirect.open-redirect)\n - [https://www.djm.org.uk/posts/djangos-little-protections-word-redirect-dangers/](https://www.djm.org.uk/posts/djangos-little-protections-word-redirect-dangers/)\n - [https://github.com/django/django/blob/d1b7bd030b1db111e1a3505b1fc029ab964382cc/django/utils/http.py#L231](https://github.com/django/django/blob/d1b7bd030b1db111e1a3505b1fc029ab964382cc/django/utils/http.py#L231)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
               "id": "c5d4254a-2e11-318f-ba16-d942543686f0",
-              "name": "resources.rules.python.missing-ratelimit",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
-              },
-              "fullDescription": {
-                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
-              "id": "ccd2742b-ee4f-3b2d-ad7f-5fcdc0283d51",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
                 "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
@@ -584,7 +563,7 @@
               }
             },
             {
-              "id": "1010e26c-51f7-3790-be3a-a52daf0b115d",
+              "id": "ccd2742b-ee4f-3b2d-ad7f-5fcdc0283d51",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
                 "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
@@ -626,7 +605,7 @@
               }
             },
             {
-              "id": "e4eb192a-e366-3192-b462-9287e9fc078c",
+              "id": "1010e26c-51f7-3790-be3a-a52daf0b115d",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
                 "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
@@ -689,6 +668,27 @@
               }
             },
             {
+              "id": "e4eb192a-e366-3192-b462-9287e9fc078c",
+              "name": "resources.rules.python.missing-ratelimit",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
+              },
+              "fullDescription": {
+                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
               "id": "20e909a6-5887-399c-9c9c-8feb2578811d",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
@@ -711,27 +711,6 @@
             },
             {
               "id": "a8cb9783-91ae-380f-aa38-7077d24ff0f8",
-              "name": "resources.rules.python.missing-ratelimit",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
-              },
-              "fullDescription": {
-                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
-              "id": "beb54bca-6963-3b97-ac57-09e62375a75e",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
                 "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
@@ -794,42 +773,21 @@
               }
             },
             {
-              "id": "4b80f65a-8449-30f3-aa16-db1e2954cd58",
-              "name": "resources.rules.python.access-foreign-keys",
+              "id": "beb54bca-6963-3b97-ac57-09e62375a75e",
+              "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.python.access-foreign-keys"
+                "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
               },
               "fullDescription": {
-                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query."
+                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
               },
               "defaultConfiguration": {
                 "enabled": true,
                 "level": "warning"
               },
               "help": {
-                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
-              "id": "4cd330f5-f5b3-3639-9149-a0f505b6e03c",
-              "name": "resources.rules.python.access-foreign-keys",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.python.access-foreign-keys"
-              },
-              "fullDescription": {
-                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query."
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
               },
               "properties": {
                 "precision": "very-high"
@@ -857,7 +815,7 @@
               }
             },
             {
-              "id": "feb519b6-12d9-3041-9528-1f2d05df46d8",
+              "id": "4b80f65a-8449-30f3-aa16-db1e2954cd58",
               "name": "resources.rules.python.access-foreign-keys",
               "shortDescription": {
                 "text": "Opengrep Finding: resources.rules.python.access-foreign-keys"
@@ -899,6 +857,27 @@
               }
             },
             {
+              "id": "4cd330f5-f5b3-3639-9149-a0f505b6e03c",
+              "name": "resources.rules.python.access-foreign-keys",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.python.access-foreign-keys"
+              },
+              "fullDescription": {
+                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
               "id": "d897366b-79fa-33d0-83fd-9f898c02e749",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
@@ -914,6 +893,27 @@
               "help": {
                 "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
                 "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
+              "id": "feb519b6-12d9-3041-9528-1f2d05df46d8",
+              "name": "resources.rules.python.access-foreign-keys",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.python.access-foreign-keys"
+              },
+              "fullDescription": {
+                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query."
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
               },
               "properties": {
                 "precision": "very-high"
@@ -962,6 +962,27 @@
               }
             },
             {
+              "id": "63453d5c-50e1-351a-9435-bb9c8b083e3b",
+              "name": "resources.rules.python.missing-ratelimit",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
+              },
+              "fullDescription": {
+                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
               "id": "6215d2cb-b347-389e-a0bb-c17f6c68ef3f",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
@@ -984,27 +1005,6 @@
             },
             {
               "id": "56e0931f-cf12-3912-8983-fd07c9417400",
-              "name": "resources.rules.python.missing-ratelimit",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
-              },
-              "fullDescription": {
-                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Function '$FUNC' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart](https://github.com/jsocol/django-ratelimit/blob/main/docs/index.rst#quickstart)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
-              "id": "63453d5c-50e1-351a-9435-bb9c8b083e3b",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
                 "text": "Opengrep Finding: resources.rules.python.missing-ratelimit"
@@ -1090,28 +1090,6 @@
               }
             },
             {
-              "id": "9e8162ed-d2e3-3629-ba35-1f6eab7dff40",
-              "name": "python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
-              "shortDescription": {
-                "text": "Opengrep Finding: python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid"
-              },
-              "fullDescription": {
-                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "helpUri": "https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
-              "help": {
-                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid)\n - [https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data](https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
               "id": "ce8fb1fc-982d-3a4b-a5ed-8c532786ded2",
               "name": "python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
               "shortDescription": {
@@ -1134,29 +1112,7 @@
               }
             },
             {
-              "id": "2fbe92ea-8481-3a54-8394-8d876c75ba23",
-              "name": "python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
-              "shortDescription": {
-                "text": "Opengrep Finding: python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid"
-              },
-              "fullDescription": {
-                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "helpUri": "https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
-              "help": {
-                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid)\n - [https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data](https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
-              "id": "cdf61b32-6a0f-3f6d-a1cc-c87c21f93437",
+              "id": "9e8162ed-d2e3-3629-ba35-1f6eab7dff40",
               "name": "python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
               "shortDescription": {
                 "text": "Opengrep Finding: python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid"
@@ -1200,7 +1156,94 @@
               }
             },
             {
+              "id": "cdf61b32-6a0f-3f6d-a1cc-c87c21f93437",
+              "name": "python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid"
+              },
+              "fullDescription": {
+                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
+              "help": {
+                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid)\n - [https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data](https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
               "id": "034a9d8f-fce6-3e5e-afe9-6eaae3a4e3ac",
+              "name": "python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid"
+              },
+              "fullDescription": {
+                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
+              "help": {
+                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid)\n - [https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data](https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
+              "id": "2fbe92ea-8481-3a54-8394-8d876c75ba23",
+              "name": "python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
+              "shortDescription": {
+                "text": "Opengrep Finding: python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid"
+              },
+              "fullDescription": {
+                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "helpUri": "https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
+              "help": {
+                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid)\n - [https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data](https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
+              "id": "bf61413b-a33f-30e5-96cb-066c4c3304d5",
+              "name": "resources.rules.python.unvalidated-password",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.python.unvalidated-password"
+              },
+              "fullDescription": {
+                "text": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation](https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
+            },
+            {
+              "id": "dc7ed39f-b3fc-356a-ac3c-c034bb03e250",
               "name": "python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
               "shortDescription": {
                 "text": "Opengrep Finding: python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid"
@@ -1244,49 +1287,6 @@
               }
             },
             {
-              "id": "dc7ed39f-b3fc-356a-ac3c-c034bb03e250",
-              "name": "python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
-              "shortDescription": {
-                "text": "Opengrep Finding: python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid"
-              },
-              "fullDescription": {
-                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "helpUri": "https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid",
-              "help": {
-                "text": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Use $FORM.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.django-using-request-post-after-is-valid.django-using-request-post-after-is-valid)\n - [https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data](https://docs.djangoproject.com/en/4.2/ref/forms/api/#accessing-clean-data)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
-              "id": "bf61413b-a33f-30e5-96cb-066c4c3304d5",
-              "name": "resources.rules.python.unvalidated-password",
-              "shortDescription": {
-                "text": "Opengrep Finding: resources.rules.python.unvalidated-password"
-              },
-              "fullDescription": {
-                "text": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n"
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "help": {
-                "text": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation](https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
               "id": "28411a31-3681-3a49-9dd0-57108faf9f89",
               "name": "resources.rules.python.no-csrf-exempt",
               "shortDescription": {
@@ -1309,21 +1309,20 @@
             },
             {
               "id": "5b9169f5-dfef-36ba-bdb8-1f6756a26768",
-              "name": "python.django.security.audit.unvalidated-password.unvalidated-password",
+              "name": "resources.rules.python.unvalidated-password",
               "shortDescription": {
-                "text": "Opengrep Finding: python.django.security.audit.unvalidated-password.unvalidated-password"
+                "text": "Opengrep Finding: resources.rules.python.unvalidated-password"
               },
               "fullDescription": {
-                "text": "The password on '$MODEL' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information."
+                "text": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n"
               },
               "defaultConfiguration": {
                 "enabled": true,
                 "level": "warning"
               },
-              "helpUri": "https://semgrep.dev/r/python.django.security.audit.unvalidated-password.unvalidated-password",
               "help": {
-                "text": "The password on '$MODEL' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "The password on '$MODEL' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.audit.unvalidated-password.unvalidated-password)\n - [https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation](https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation)\n"
+                "text": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation](https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation)\n"
               },
               "properties": {
                 "precision": "very-high"
@@ -1331,21 +1330,20 @@
             },
             {
               "id": "e40ebe12-13f4-35cb-afad-4d809e9f5c36",
-              "name": "python.django.security.audit.csrf-exempt.no-csrf-exempt",
+              "name": "resources.rules.python.no-csrf-exempt",
               "shortDescription": {
-                "text": "Opengrep Finding: python.django.security.audit.csrf-exempt.no-csrf-exempt"
+                "text": "Opengrep Finding: resources.rules.python.no-csrf-exempt"
               },
               "fullDescription": {
-                "text": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator."
+                "text": "There is rarely a good reason to use @csrf_exempt as is used for `$R`."
               },
               "defaultConfiguration": {
                 "enabled": true,
                 "level": "warning"
               },
-              "helpUri": "https://semgrep.dev/r/python.django.security.audit.csrf-exempt.no-csrf-exempt",
               "help": {
-                "text": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.audit.csrf-exempt.no-csrf-exempt)\n - [https://owasp.org/Top10/A01_2021-Broken_Access_Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control)\n"
+                "text": "There is rarely a good reason to use @csrf_exempt as is used for `$R`.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "There is rarely a good reason to use @csrf_exempt as is used for `$R`.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>"
               },
               "properties": {
                 "precision": "very-high"
@@ -1373,28 +1371,6 @@
               }
             },
             {
-              "id": "2fcb425f-c5ab-3d7a-8e1e-4649be479819",
-              "name": "python.django.security.audit.unvalidated-password.unvalidated-password",
-              "shortDescription": {
-                "text": "Opengrep Finding: python.django.security.audit.unvalidated-password.unvalidated-password"
-              },
-              "fullDescription": {
-                "text": "The password on '$MODEL' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information."
-              },
-              "defaultConfiguration": {
-                "enabled": true,
-                "level": "warning"
-              },
-              "helpUri": "https://semgrep.dev/r/python.django.security.audit.unvalidated-password.unvalidated-password",
-              "help": {
-                "text": "The password on '$MODEL' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information.\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
-                "markdown": "The password on '$MODEL' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information.\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [Semgrep Rule](https://semgrep.dev/r/python.django.security.audit.unvalidated-password.unvalidated-password)\n - [https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation](https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation)\n"
-              },
-              "properties": {
-                "precision": "very-high"
-              }
-            },
-            {
               "id": "8bf42010-cc7f-3798-b15e-df62bbeae17a",
               "name": "resources.rules.python.missing-ratelimit",
               "shortDescription": {
@@ -1414,6 +1390,27 @@
               "properties": {
                 "precision": "very-high"
               }
+            },
+            {
+              "id": "2fcb425f-c5ab-3d7a-8e1e-4649be479819",
+              "name": "resources.rules.python.unvalidated-password",
+              "shortDescription": {
+                "text": "Opengrep Finding: resources.rules.python.unvalidated-password"
+              },
+              "fullDescription": {
+                "text": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n"
+              },
+              "defaultConfiguration": {
+                "enabled": true,
+                "level": "warning"
+              },
+              "help": {
+                "text": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n\n💎 Enable cross-file analysis and Pro rules for free at sg.run/pro",
+                "markdown": "The password on '$MODEL' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n\n\n#### 💎 Enable cross-file analysis and Pro rules for free at <a href='https://sg.run/pro'>sg.run/pro</a>\n\n<b>References:</b>\n - [https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation](https://docs.djangoproject.com/en/3.0/topics/auth/passwords/#module-django.contrib.auth.password_validation)\n"
+              },
+              "properties": {
+                "precision": "very-high"
+              }
             }
           ],
           "language": "en-US",
@@ -1426,6 +1423,37 @@
       },
       "language": "en-US",
       "results": [
+        {
+          "ruleId": "5deaa7dd-e6d7-3457-84d7-56041ad1022a",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the 'subprocess' module instead, which is easier to use without accidentally exposing a command injection vulnerability."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/misc.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 33,
+                  "startColumn": 5,
+                  "endLine": 39,
+                  "endColumn": 17,
+                  "snippet": {
+                    "text": "    os.system(\n        \"mv \" +\n        uploaded_file.temporary_file_path() +\n        \" \" +\n        \"%s/%s\" %\n        (upload_dir_path,\n         title))"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "4a74f9056cc9d887ebca39409117e897a46cfc6c135ad8ebc53bde9bd4af911d6238c172cbc5969b17014007a85f388cc843bd6e5336934181ee218e764229bb_0"
+          },
+          "properties": {}
+        },
         {
           "ruleId": "52a07bbd-d255-3152-8797-0c7646f1184b",
           "kind": "fail",
@@ -1489,33 +1517,33 @@
           "properties": {}
         },
         {
-          "ruleId": "5deaa7dd-e6d7-3457-84d7-56041ad1022a",
+          "ruleId": "760a3b68-0199-3e22-8844-50074b9fc455",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "The Python 'os' execution functions are not secure against maliciously constructed input"
+            "text": "Data from request is passed to execute(). This is a SQL injection and could be exploited. See https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection to learn how to mitigate. See https://cwe.mitre.org/data/definitions/89.html to learn about SQLi."
           },
           "locations": [
             {
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "taskManager/misc.py",
+                  "uri": "taskManager/views.py",
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 33,
-                  "startColumn": 5,
-                  "endLine": 39,
-                  "endColumn": 17,
+                  "startLine": 178,
+                  "startColumn": 13,
+                  "endLine": 185,
+                  "endColumn": 49,
                   "snippet": {
-                    "text": "    os.system(\n        \"mv \" +\n        uploaded_file.temporary_file_path() +\n        \" \" +\n        \"%s/%s\" %\n        (upload_dir_path,\n         title))"
+                    "text": "            name = request.POST.get('name', False)\n            upload_path = store_uploaded_file(name, request.FILES['file'])\n\n            #A1 - Injection (SQLi)\n            curs = connection.cursor()\n            curs.execute(\n                \"insert into taskManager_file ('name','path','project_id') values ('%s','%s',%s)\" %\n                (name, upload_path, project_id))"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "e9cc0f11b64a0eca08eb3a4e9c07a20ab0c2e43b40a75056de839d0afa10b87d6e8727ad3ce21551a78c587c30af398d3a291ef54f53cc92fbd196736458e021_0"
+            "matchBasedId/v1": "06cf4885a6f586f9c587838f4cde7981e72bc78cce80870b80ed4500e0c954c383cf407aea185acd00cf751eca158f2fa5378758b518dbed311a8bf2bbef6b2c_0"
           },
           "properties": {}
         },
@@ -1547,37 +1575,6 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "acc1ad9e276281f8a699189ee044a39bb24e41a06742df4df95e3a7e999802b44d5e21d944b84d2d15aaa6253637c8e703703fd8cac41d0f5e0efb4628ef290b_0"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "760a3b68-0199-3e22-8844-50074b9fc455",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Data from request is passed to execute(). This is a SQL injection and could be exploited. See https://docs.djangoproject.com/en/3.0/topics/security/#sql-injection-protection to learn how to mitigate. See https://cwe.mitre.org/data/definitions/89.html to learn about SQLi."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 178,
-                  "startColumn": 13,
-                  "endLine": 185,
-                  "endColumn": 49,
-                  "snippet": {
-                    "text": "            name = request.POST.get('name', False)\n            upload_path = store_uploaded_file(name, request.FILES['file'])\n\n            #A1 - Injection (SQLi)\n            curs = connection.cursor()\n            curs.execute(\n                \"insert into taskManager_file ('name','path','project_id') values ('%s','%s',%s)\" %\n                (name, upload_path, project_id))"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "06cf4885a6f586f9c587838f4cde7981e72bc78cce80870b80ed4500e0c954c383cf407aea185acd00cf751eca158f2fa5378758b518dbed311a8bf2bbef6b2c_0"
           },
           "properties": {}
         },
@@ -1617,7 +1614,7 @@
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Avoiding SQL string concatenation: untrusted input concatenated with raw SQL query can result in SQL Injection. In order to execute raw query safely, prepared statement should be used. SQLAlchemy provides TextualSQL to easily used prepared statement with named parameters. For complex SQL composition, use SQL Expression Language or Schema Definition Language. In most cases, SQLAlchemy ORM will be a better option."
+            "text": "Detected possible formatted SQL query. Use parameterized queries instead."
           },
           "locations": [
             {
@@ -1639,7 +1636,7 @@
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "a72f2c2cca65585a660edce59ad06fa5de5efbe29d45c6ac9ce2d9450280c2995020e44616700d47a77f48f1d065c54164aceb974e295b3ef0d19b1a56787085_0"
+            "matchBasedId/v1": "945e93a6cb396136f95c955684dd18adf978357114598d4e69c2a4e92f56260dee848d7c273c3111a14b40e078ede7bc0dd1261c83191f842cbd0153804d0569_0"
           },
           "properties": {}
         },
@@ -1675,37 +1672,6 @@
           "properties": {}
         },
         {
-          "ruleId": "6be4006a-344e-3898-98f8-f0bc5b8a6ccd",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "file object opened without corresponding close"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 209,
-                  "startColumn": 5,
-                  "endLine": 213,
-                  "endColumn": 14,
-                  "snippet": {
-                    "text": "    abspath = open(\n        os.path.dirname(\n            os.path.realpath(__file__)) +\n        file.path,\n        'rb')"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "9275b21797e92a6140734c62823c21468a9f9c8d236a4118518bb413fee275063d7b8d25e7aaefb772eabf8602e81c7d052b0e5528afbf205653c4ad189948c3_0"
-          },
-          "properties": {}
-        },
-        {
           "ruleId": "aee6b29e-7c2f-30c9-bf13-14a4bd19b6d5",
           "kind": "fail",
           "level": "warning",
@@ -1733,6 +1699,37 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "442dbc986b22175914d6a9bf029ab4b39b5a841c64f86c87339edffcb9fb5cf56b88781fa680f659af497da13047669a7d3b0646420f995c86e97e7276d927a8_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "6be4006a-344e-3898-98f8-f0bc5b8a6ccd",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "file object opened without corresponding close"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 209,
+                  "startColumn": 5,
+                  "endLine": 213,
+                  "endColumn": 14,
+                  "snippet": {
+                    "text": "    abspath = open(\n        os.path.dirname(\n            os.path.realpath(__file__)) +\n        file.path,\n        'rb')"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "9275b21797e92a6140734c62823c21468a9f9c8d236a4118518bb413fee275063d7b8d25e7aaefb772eabf8602e81c7d052b0e5528afbf205653c4ad189948c3_0"
           },
           "properties": {}
         },
@@ -1923,6 +1920,68 @@
           "properties": {}
         },
         {
+          "ruleId": "482409c2-3748-388e-b6dc-ba4cc1ab884d",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 339,
+                  "startColumn": 35,
+                  "endLine": 339,
+                  "endColumn": 50,
+                  "snippet": {
+                    "text": "        project.users_assigned = [request.user.id]"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "f6a881f18ba1d9494868de1126758faca9832c4dc3bd3cba521e3a011b02375e27fb9244fd5bedd267112b3e0b23d0c46bc1a72f820056f49d7dfea9f567cca3_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "1dbd4dd2-5efa-3f5d-a3e5-cb9eb76794ef",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Function 'project_edit' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 350,
+                  "startColumn": 1,
+                  "endLine": 371,
+                  "endColumn": 86,
+                  "snippet": {
+                    "text": "def project_edit(request, project_id):\n\n    proj = Project.objects.get(pk=project_id)\n\n    if request.method == 'POST':\n\n        title = request.POST.get('title', False)\n        text = request.POST.get('text', False)\n        project_priority = int(request.POST.get('project_priority', False))\n        project_duedate = datetime.datetime.fromtimestamp(\n            int(request.POST.get('project_duedate', False)))\n\n        proj.title = title\n        proj.text = text\n        proj.priority = project_priority\n        proj.due_date = project_duedate\n        proj.save()\n\n        return redirect('/taskManager/' + project_id + '/')\n    else:\n        return render_to_response(\n            'taskManager/project_edit.html', {'proj': proj}, RequestContext(request))"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "b1718db331573dd17d67ac5e3641326e39a7e21f6fc6a39a5947f97882fee168058546a135a08ea5dc283e0042a2805b08630ef0781e0826820ff49c8f7bcba1_0"
+          },
+          "properties": {}
+        },
+        {
           "ruleId": "722bf57d-df92-3ffb-8159-bd271ad5437a",
           "kind": "fail",
           "level": "warning",
@@ -1985,11 +2044,11 @@
           "properties": {}
         },
         {
-          "ruleId": "482409c2-3748-388e-b6dc-ba4cc1ab884d",
+          "ruleId": "8f1b728f-0a34-3560-8f0c-b0d4cb1631bc",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "You should use ITEM.user_id rather than ITEM.user.id to prevent running an extra query."
+            "text": "Function 'logout_view' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
           },
           "locations": [
             {
@@ -1999,19 +2058,50 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 339,
-                  "startColumn": 35,
-                  "endLine": 339,
-                  "endColumn": 50,
+                  "startLine": 385,
+                  "startColumn": 1,
+                  "endLine": 387,
+                  "endColumn": 66,
                   "snippet": {
-                    "text": "        project.users_assigned = [request.user.id]"
+                    "text": "def logout_view(request):\n    logout(request)\n    return redirect(request.GET.get('redirect', '/taskManager/'))"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "f6a881f18ba1d9494868de1126758faca9832c4dc3bd3cba521e3a011b02375e27fb9244fd5bedd267112b3e0b23d0c46bc1a72f820056f49d7dfea9f567cca3_0"
+            "matchBasedId/v1": "931f18248848234bcb54d19f3f91845d07f930d4414dddb4f1a74d11a42e3a621bef7b3bda50a17fef1499de316cbe3ea3a4b3ce00a108b8b9b16825df9cfb5b_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "0d2bd611-c255-3e14-aa92-70408e01d982",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Data from request ($DATA) is passed to redirect(). This is an open redirect and could be exploited. Ensure you are redirecting to safe URLs by using django.utils.http.is_safe_url(). See https://cwe.mitre.org/data/definitions/601.html for more information."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 387,
+                  "startColumn": 5,
+                  "endLine": 387,
+                  "endColumn": 66,
+                  "snippet": {
+                    "text": "    return redirect(request.GET.get('redirect', '/taskManager/'))"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "4db0481a384b80b5ecc723fc92889b55f8fec384f565520d58480e4a75f9d7a2b8816c8d393dffec990bc4e353b88b29a8570575976535bfccc8ec19caee986f_0"
           },
           "properties": {}
         },
@@ -2047,99 +2137,6 @@
           "properties": {}
         },
         {
-          "ruleId": "8f1b728f-0a34-3560-8f0c-b0d4cb1631bc",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Function 'logout_view' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 385,
-                  "startColumn": 1,
-                  "endLine": 387,
-                  "endColumn": 66,
-                  "snippet": {
-                    "text": "def logout_view(request):\n    logout(request)\n    return redirect(request.GET.get('redirect', '/taskManager/'))"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "931f18248848234bcb54d19f3f91845d07f930d4414dddb4f1a74d11a42e3a621bef7b3bda50a17fef1499de316cbe3ea3a4b3ce00a108b8b9b16825df9cfb5b_0"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "1dbd4dd2-5efa-3f5d-a3e5-cb9eb76794ef",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Function 'project_edit' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 350,
-                  "startColumn": 1,
-                  "endLine": 371,
-                  "endColumn": 86,
-                  "snippet": {
-                    "text": "def project_edit(request, project_id):\n\n    proj = Project.objects.get(pk=project_id)\n\n    if request.method == 'POST':\n\n        title = request.POST.get('title', False)\n        text = request.POST.get('text', False)\n        project_priority = int(request.POST.get('project_priority', False))\n        project_duedate = datetime.datetime.fromtimestamp(\n            int(request.POST.get('project_duedate', False)))\n\n        proj.title = title\n        proj.text = text\n        proj.priority = project_priority\n        proj.due_date = project_duedate\n        proj.save()\n\n        return redirect('/taskManager/' + project_id + '/')\n    else:\n        return render_to_response(\n            'taskManager/project_edit.html', {'proj': proj}, RequestContext(request))"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "b1718db331573dd17d67ac5e3641326e39a7e21f6fc6a39a5947f97882fee168058546a135a08ea5dc283e0042a2805b08630ef0781e0826820ff49c8f7bcba1_0"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "62f3acb3-e66f-34e4-99e1-98aa0bb30f8a",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Data from request ($DATA) is passed to redirect(). This is an open redirect and could be exploited. Ensure you are redirecting to safe URLs by using django.utils.http.is_safe_url(). See https://cwe.mitre.org/data/definitions/601.html for more information."
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 387,
-                  "startColumn": 12,
-                  "endLine": 387,
-                  "endColumn": 66,
-                  "snippet": {
-                    "text": "    return redirect(request.GET.get('redirect', '/taskManager/'))"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "4db0481a384b80b5ecc723fc92889b55f8fec384f565520d58480e4a75f9d7a2b8816c8d393dffec990bc4e353b88b29a8570575976535bfccc8ec19caee986f_1"
-          },
-          "properties": {}
-        },
-        {
           "ruleId": "c5d4254a-2e11-318f-ba16-d942543686f0",
           "kind": "fail",
           "level": "warning",
@@ -2167,68 +2164,6 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "2187a25143148882eb36095e5d8878ba067a5350277baae22c175c6d7dc8bd3701d3ca337f209c6b097a9a38baa261c53ac74546c4096d8df05888c449c60517_0"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "ccd2742b-ee4f-3b2d-ad7f-5fcdc0283d51",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Function 'index' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 466,
-                  "startColumn": 1,
-                  "endLine": 488,
-                  "endColumn": 10,
-                  "snippet": {
-                    "text": "def index(request):\n    sorted_projects = Project.objects.order_by('-start_date')\n\n    admin_level = False\n\n    if request.user.groups.filter(name='admin_g').exists():\n        admin_level = True\n\n    list_to_show = []\n    for project in sorted_projects:\n        if(project.users_assigned.filter(username=request.user.username)).exists():\n            list_to_show.append(project)\n\n    if request.user.is_authenticated():\n        return redirect(\"/taskManager/dashboard\")\n    else:\n        return render(\n            request,\n            'taskManager/index.html',\n            {'project_list': sorted_projects,\n             'user': request.user,\n             'admin_level': admin_level}\n        )"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "2028e4dd80928feefe35ca60de313724114077867717a25a45ccb7b974d4c1aacabb353787206142bf269404f93d0e87bd464407a9502a090aa3a94711f718c6_0"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "27d5cd46-f469-3df6-97f4-9bd10a33c57b",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Function 'register' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 421,
-                  "startColumn": 1,
-                  "endLine": 463,
-                  "endColumn": 17,
-                  "snippet": {
-                    "text": "def register(request):\n\n    context = RequestContext(request)\n\n    registered = False\n\n    if request.method == 'POST':\n\n        user_form = UserForm(data=request.POST)\n\n        # If the two forms are valid...\n        if user_form.is_valid():\n            # Save the user's form data to the database.\n            user = user_form.save()\n\n            user.set_password(user.password)\n\n            # add user to lowest permission group\n\n            #grp = Group.objects.get(name='team_member')\n            # user.groups.add(grp)\n\n            user.userProfile = UserProfile.objects.create(user=user)\n            user.userProfile.save()\n            user.save()\n\n            # Update our variable to tell the template registration was\n            # successful.\n            registered = True\n\n        else:\n            print(user_form.errors)\n\n    # Not a HTTP POST, so we render our form using two ModelForm instances.\n    # These forms will be blank, ready for user input.\n    else:\n        user_form = UserForm()\n\n    # Render the template depending on the context.\n    return render_to_response(\n        'taskManager/register.html',\n        {'user_form': user_form, 'registered': registered},\n        context)"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "baae5e54ef3e35eef1a1bfc7c5ecf212952319ad2c1ed3bd31a15fe72b31fa18a2bd831179606c4c81a4cf1e53effc8af80b92074ec2c9f9f1f86b8024874937_0"
           },
           "properties": {}
         },
@@ -2264,11 +2199,11 @@
           "properties": {}
         },
         {
-          "ruleId": "1010e26c-51f7-3790-be3a-a52daf0b115d",
+          "ruleId": "27d5cd46-f469-3df6-97f4-9bd10a33c57b",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Function 'profile_view' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+            "text": "Function 'register' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
           },
           "locations": [
             {
@@ -2278,19 +2213,50 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 491,
+                  "startLine": 421,
                   "startColumn": 1,
-                  "endLine": 508,
-                  "endColumn": 81,
+                  "endLine": 463,
+                  "endColumn": 17,
                   "snippet": {
-                    "text": "def profile_view(request, user_id):\n    try:\n        user = User.objects.get(pk=user_id)\n    except User.DoesNotExist:\n        return redirect(\"/taskManager/dashboard\")\n\n    if request.user.groups.filter(name='admin_g').exists():\n        role = \"Admin\"\n    elif request.user.groups.filter(name='project_managers').exists():\n        role = \"Project Manager\"\n    else:\n        role = \"Team Member\"\n\n    sorted_projects = Project.objects.filter(\n        users_assigned=request.user.id).order_by('title')\n\n    return render(request, 'taskManager/profile_view.html',\n                  {'user': user, 'role': role, 'project_list': sorted_projects})"
+                    "text": "def register(request):\n\n    context = RequestContext(request)\n\n    registered = False\n\n    if request.method == 'POST':\n\n        user_form = UserForm(data=request.POST)\n\n        # If the two forms are valid...\n        if user_form.is_valid():\n            # Save the user's form data to the database.\n            user = user_form.save()\n\n            user.set_password(user.password)\n\n            # add user to lowest permission group\n\n            #grp = Group.objects.get(name='team_member')\n            # user.groups.add(grp)\n\n            user.userProfile = UserProfile.objects.create(user=user)\n            user.userProfile.save()\n            user.save()\n\n            # Update our variable to tell the template registration was\n            # successful.\n            registered = True\n\n        else:\n            print(user_form.errors)\n\n    # Not a HTTP POST, so we render our form using two ModelForm instances.\n    # These forms will be blank, ready for user input.\n    else:\n        user_form = UserForm()\n\n    # Render the template depending on the context.\n    return render_to_response(\n        'taskManager/register.html',\n        {'user_form': user_form, 'registered': registered},\n        context)"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "343cac9ec6c15ae7ed56a8ca7be5b395e46183f4f6001583206e258f3c495f662246080a0fc6ae88c2cc5f0967fcc78a867cb189111914d32a011ccbb2df7887_0"
+            "matchBasedId/v1": "baae5e54ef3e35eef1a1bfc7c5ecf212952319ad2c1ed3bd31a15fe72b31fa18a2bd831179606c4c81a4cf1e53effc8af80b92074ec2c9f9f1f86b8024874937_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "ccd2742b-ee4f-3b2d-ad7f-5fcdc0283d51",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Function 'index' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 466,
+                  "startColumn": 1,
+                  "endLine": 488,
+                  "endColumn": 10,
+                  "snippet": {
+                    "text": "def index(request):\n    sorted_projects = Project.objects.order_by('-start_date')\n\n    admin_level = False\n\n    if request.user.groups.filter(name='admin_g').exists():\n        admin_level = True\n\n    list_to_show = []\n    for project in sorted_projects:\n        if(project.users_assigned.filter(username=request.user.username)).exists():\n            list_to_show.append(project)\n\n    if request.user.is_authenticated():\n        return redirect(\"/taskManager/dashboard\")\n    else:\n        return render(\n            request,\n            'taskManager/index.html',\n            {'project_list': sorted_projects,\n             'user': request.user,\n             'admin_level': admin_level}\n        )"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "2028e4dd80928feefe35ca60de313724114077867717a25a45ccb7b974d4c1aacabb353787206142bf269404f93d0e87bd464407a9502a090aa3a94711f718c6_0"
           },
           "properties": {}
         },
@@ -2326,11 +2292,11 @@
           "properties": {}
         },
         {
-          "ruleId": "e4eb192a-e366-3192-b462-9287e9fc078c",
+          "ruleId": "1010e26c-51f7-3790-be3a-a52daf0b115d",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Function 'project_details' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+            "text": "Function 'profile_view' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
           },
           "locations": [
             {
@@ -2340,19 +2306,19 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 511,
+                  "startLine": 491,
                   "startColumn": 1,
-                  "endLine": 525,
-                  "endColumn": 70,
+                  "endLine": 508,
+                  "endColumn": 81,
                   "snippet": {
-                    "text": "def project_details(request, project_id):\n    proj = Project.objects.filter(\n        users_assigned=request.user.id,\n        pk=project_id)\n    if not proj:\n        messages.warning(\n            request,\n            'You are not authorized to view this project')\n        return redirect('/taskManager/dashboard')\n    else:\n        proj = Project.objects.get(pk=project_id)\n        user_can_edit = request.user.has_perm('project_edit')\n\n        return render(request, 'taskManager/project_details.html',\n                      {'proj': proj, 'user_can_edit': user_can_edit})"
+                    "text": "def profile_view(request, user_id):\n    try:\n        user = User.objects.get(pk=user_id)\n    except User.DoesNotExist:\n        return redirect(\"/taskManager/dashboard\")\n\n    if request.user.groups.filter(name='admin_g').exists():\n        role = \"Admin\"\n    elif request.user.groups.filter(name='project_managers').exists():\n        role = \"Project Manager\"\n    else:\n        role = \"Team Member\"\n\n    sorted_projects = Project.objects.filter(\n        users_assigned=request.user.id).order_by('title')\n\n    return render(request, 'taskManager/profile_view.html',\n                  {'user': user, 'role': role, 'project_list': sorted_projects})"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "e55224ad9e393a4309272e53fbd6a16dda942035c19950e81545b27194c26fb2abab5ff35e80b8e8600f9904a188957acff9bbab071cb27e31b4fab757926db9_0"
+            "matchBasedId/v1": "343cac9ec6c15ae7ed56a8ca7be5b395e46183f4f6001583206e258f3c495f662246080a0fc6ae88c2cc5f0967fcc78a867cb189111914d32a011ccbb2df7887_0"
           },
           "properties": {}
         },
@@ -2419,6 +2385,37 @@
           "properties": {}
         },
         {
+          "ruleId": "e4eb192a-e366-3192-b462-9287e9fc078c",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Function 'project_details' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 511,
+                  "startColumn": 1,
+                  "endLine": 525,
+                  "endColumn": 70,
+                  "snippet": {
+                    "text": "def project_details(request, project_id):\n    proj = Project.objects.filter(\n        users_assigned=request.user.id,\n        pk=project_id)\n    if not proj:\n        messages.warning(\n            request,\n            'You are not authorized to view this project')\n        return redirect('/taskManager/dashboard')\n    else:\n        proj = Project.objects.get(pk=project_id)\n        user_can_edit = request.user.has_perm('project_edit')\n\n        return render(request, 'taskManager/project_details.html',\n                      {'proj': proj, 'user_can_edit': user_can_edit})"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "e55224ad9e393a4309272e53fbd6a16dda942035c19950e81545b27194c26fb2abab5ff35e80b8e8600f9904a188957acff9bbab071cb27e31b4fab757926db9_0"
+          },
+          "properties": {}
+        },
+        {
           "ruleId": "20e909a6-5887-399c-9c9c-8feb2578811d",
           "kind": "fail",
           "level": "warning",
@@ -2477,37 +2474,6 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "4f25d99d33c3bfd09f6f227b755b1ab5a88bc28244ef23a768c10fb5642bb7a13cca3c22ea32cd0a98809c1458bd22a5a8d9c98713f5378be404361936159cf5_0"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "beb54bca-6963-3b97-ac57-09e62375a75e",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Function 'dashboard' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 628,
-                  "startColumn": 1,
-                  "endLine": 637,
-                  "endColumn": 47,
-                  "snippet": {
-                    "text": "def dashboard(request):\n    sorted_projects = Project.objects.filter(\n        users_assigned=request.user.id).order_by('title')\n    sorted_tasks = Task.objects.filter(\n        users_assigned=request.user.id).order_by('title')\n    return render(request,\n                  'taskManager/dashboard.html',\n                  {'project_list': sorted_projects,\n                   'user': request.user,\n                   'task_list': sorted_tasks})"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "0dd1caa82357fb8ed61e7761d78af300a7f378e881c39a1d8aac5d540bff1d12130cccb413069c3315cd95eb887230739f39872829b83800d8dbfe6f4ecc6d46_0"
           },
           "properties": {}
         },
@@ -2574,6 +2540,99 @@
           "properties": {}
         },
         {
+          "ruleId": "beb54bca-6963-3b97-ac57-09e62375a75e",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Function 'dashboard' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 628,
+                  "startColumn": 1,
+                  "endLine": 637,
+                  "endColumn": 47,
+                  "snippet": {
+                    "text": "def dashboard(request):\n    sorted_projects = Project.objects.filter(\n        users_assigned=request.user.id).order_by('title')\n    sorted_tasks = Task.objects.filter(\n        users_assigned=request.user.id).order_by('title')\n    return render(request,\n                  'taskManager/dashboard.html',\n                  {'project_list': sorted_projects,\n                   'user': request.user,\n                   'task_list': sorted_tasks})"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "0dd1caa82357fb8ed61e7761d78af300a7f378e881c39a1d8aac5d540bff1d12130cccb413069c3315cd95eb887230739f39872829b83800d8dbfe6f4ecc6d46_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "aaecac06-e9b6-331e-b8ea-6e98ce1af7e8",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Function 'project_list' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 640,
+                  "startColumn": 1,
+                  "endLine": 652,
+                  "endColumn": 50,
+                  "snippet": {
+                    "text": "def project_list(request):\n    sorted_projects = Project.objects.filter(\n        users_assigned=request.user.id).order_by('title')\n    user_can_edit = request.user.has_perm('project_edit')\n    user_can_delete = request.user.has_perm('project_delete')\n    user_can_add = request.user.has_perm('project_add')\n    return render(request,\n                  'taskManager/project_list.html',\n                  {'project_list': sorted_projects,\n                   'user': request.user,\n                   'user_can_edit': user_can_edit,\n                   'user_can_delete': user_can_delete,\n                   'user_can_add': user_can_add})"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "365a17c14b16c5cafcb6bdae3b94e0ce261ccd3506fbcd897e1997a661b00576f48057dc85fed26cdb84dc433ba780e1b76d171d6e53298d56455a49288231bd_0"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "9edd99c0-49f8-3134-bb01-51f736aeaa4b",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Function 'task_list' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 655,
+                  "startColumn": 1,
+                  "endLine": 658,
+                  "endColumn": 69,
+                  "snippet": {
+                    "text": "def task_list(request):\n    my_task_list = Task.objects.filter(users_assigned=request.user.id)\n    return render(request, 'taskManager/task_list.html',\n                  {'task_list': my_task_list, 'user': request.user})"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "e53d3d1aecccff6dbed7182450db4e20593629b9c8619a2ac2c55b54b84c8fa2e75e4386440d7ac2568065483db08c3276667b91f9510f96333052299f3dd7f0_0"
+          },
+          "properties": {}
+        },
+        {
           "ruleId": "4b80f65a-8449-30f3-aa16-db1e2954cd58",
           "kind": "fail",
           "level": "warning",
@@ -2636,11 +2695,11 @@
           "properties": {}
         },
         {
-          "ruleId": "aaecac06-e9b6-331e-b8ea-6e98ce1af7e8",
+          "ruleId": "d897366b-79fa-33d0-83fd-9f898c02e749",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Function 'project_list' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+            "text": "Function 'search' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
           },
           "locations": [
             {
@@ -2650,19 +2709,19 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 640,
+                  "startLine": 661,
                   "startColumn": 1,
-                  "endLine": 652,
-                  "endColumn": 50,
+                  "endLine": 675,
+                  "endColumn": 42,
                   "snippet": {
-                    "text": "def project_list(request):\n    sorted_projects = Project.objects.filter(\n        users_assigned=request.user.id).order_by('title')\n    user_can_edit = request.user.has_perm('project_edit')\n    user_can_delete = request.user.has_perm('project_delete')\n    user_can_add = request.user.has_perm('project_add')\n    return render(request,\n                  'taskManager/project_list.html',\n                  {'project_list': sorted_projects,\n                   'user': request.user,\n                   'user_can_edit': user_can_edit,\n                   'user_can_delete': user_can_delete,\n                   'user_can_add': user_can_add})"
+                    "text": "def search(request):\n    query = request.GET.get('q', '')\n\n    my_project_list = Project.objects.filter(\n        users_assigned=request.user.id).filter(\n            title__icontains=query).order_by('title')\n    my_task_list = Task.objects.filter(\n        users_assigned=request.user.id).filter(\n            title__icontains=query).order_by('title')\n    return render(request,\n                  'taskManager/search.html',\n                  {'q': query,\n                   'task_list': my_task_list,\n                   'project_list': my_project_list,\n                   'user': request.user})"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "365a17c14b16c5cafcb6bdae3b94e0ce261ccd3506fbcd897e1997a661b00576f48057dc85fed26cdb84dc433ba780e1b76d171d6e53298d56455a49288231bd_0"
+            "matchBasedId/v1": "828938b072b5ca32c02d12a779fc6b019394b9cf4d33dc54d619b3625f33b7de0b165c871844a524ee4baa65d1ae2f3dea15e6e9e996120e977dc3bae51624b8_0"
           },
           "properties": {}
         },
@@ -2694,68 +2753,6 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "f6a881f18ba1d9494868de1126758faca9832c4dc3bd3cba521e3a011b02375e27fb9244fd5bedd267112b3e0b23d0c46bc1a72f820056f49d7dfea9f567cca3_6"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "9edd99c0-49f8-3134-bb01-51f736aeaa4b",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Function 'task_list' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 655,
-                  "startColumn": 1,
-                  "endLine": 658,
-                  "endColumn": 69,
-                  "snippet": {
-                    "text": "def task_list(request):\n    my_task_list = Task.objects.filter(users_assigned=request.user.id)\n    return render(request, 'taskManager/task_list.html',\n                  {'task_list': my_task_list, 'user': request.user})"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "e53d3d1aecccff6dbed7182450db4e20593629b9c8619a2ac2c55b54b84c8fa2e75e4386440d7ac2568065483db08c3276667b91f9510f96333052299f3dd7f0_0"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "d897366b-79fa-33d0-83fd-9f898c02e749",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Function 'search' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 661,
-                  "startColumn": 1,
-                  "endLine": 675,
-                  "endColumn": 42,
-                  "snippet": {
-                    "text": "def search(request):\n    query = request.GET.get('q', '')\n\n    my_project_list = Project.objects.filter(\n        users_assigned=request.user.id).filter(\n            title__icontains=query).order_by('title')\n    my_task_list = Task.objects.filter(\n        users_assigned=request.user.id).filter(\n            title__icontains=query).order_by('title')\n    return render(request,\n                  'taskManager/search.html',\n                  {'q': query,\n                   'task_list': my_task_list,\n                   'project_list': my_project_list,\n                   'user': request.user})"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "828938b072b5ca32c02d12a779fc6b019394b9cf4d33dc54d619b3625f33b7de0b165c871844a524ee4baa65d1ae2f3dea15e6e9e996120e977dc3bae51624b8_0"
           },
           "properties": {}
         },
@@ -2822,6 +2819,37 @@
           "properties": {}
         },
         {
+          "ruleId": "63453d5c-50e1-351a-9435-bb9c8b083e3b",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Function 'tutorials' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 678,
+                  "startColumn": 1,
+                  "endLine": 681,
+                  "endColumn": 42,
+                  "snippet": {
+                    "text": "def tutorials(request):\n    return render(request,\n                  'taskManager/tutorials.html',\n                  {'user': request.user})"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "4e1f93f865eb6f395fdc307690ca3f68a2e76fc740668a112f560cef29a0244898f5130981b60fc3a23d96e374fbea621cc8442a21500f57773b7adafdccfa79_0"
+          },
+          "properties": {}
+        },
+        {
           "ruleId": "6215d2cb-b347-389e-a0bb-c17f6c68ef3f",
           "kind": "fail",
           "level": "warning",
@@ -2880,37 +2908,6 @@
           ],
           "fingerprints": {
             "matchBasedId/v1": "3ac913dc3368a715e4d362f00750a14f875d679a62eefdcb29ef8b5ee5dbcea47ee94f6e009f08287347354490808008b21b07e80e4cb76d192e9ae07fffd9b3_0"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "63453d5c-50e1-351a-9435-bb9c8b083e3b",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Function 'tutorials' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 678,
-                  "startColumn": 1,
-                  "endLine": 681,
-                  "endColumn": 42,
-                  "snippet": {
-                    "text": "def tutorials(request):\n    return render(request,\n                  'taskManager/tutorials.html',\n                  {'user': request.user})"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "4e1f93f865eb6f395fdc307690ca3f68a2e76fc740668a112f560cef29a0244898f5130981b60fc3a23d96e374fbea621cc8442a21500f57773b7adafdccfa79_0"
           },
           "properties": {}
         },
@@ -3008,37 +3005,6 @@
           "properties": {}
         },
         {
-          "ruleId": "9e8162ed-d2e3-3629-ba35-1f6eab7dff40",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Use form.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 719,
-                  "startColumn": 33,
-                  "endLine": 719,
-                  "endColumn": 61,
-                  "snippet": {
-                    "text": "                user.username = request.POST.get('username')"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "7c4156270e98888e9ef10909ed733713e7951404c215d65fcd6c6432e097c41d109dbb6bf39757526f6f274610650146a57abb86cd3b5d6a0c17b79ff42dfc7b_1"
-          },
-          "properties": {}
-        },
-        {
           "ruleId": "ce8fb1fc-982d-3a4b-a5ed-8c532786ded2",
           "kind": "fail",
           "level": "warning",
@@ -3070,7 +3036,7 @@
           "properties": {}
         },
         {
-          "ruleId": "2fbe92ea-8481-3a54-8394-8d876c75ba23",
+          "ruleId": "9e8162ed-d2e3-3629-ba35-1f6eab7dff40",
           "kind": "fail",
           "level": "warning",
           "message": {
@@ -3084,50 +3050,19 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 724,
-                  "startColumn": 16,
-                  "endLine": 724,
-                  "endColumn": 41,
+                  "startLine": 719,
+                  "startColumn": 33,
+                  "endLine": 719,
+                  "endColumn": 61,
                   "snippet": {
-                    "text": "            if request.POST.get('email') != user.email:"
+                    "text": "                user.username = request.POST.get('username')"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "7c4156270e98888e9ef10909ed733713e7951404c215d65fcd6c6432e097c41d109dbb6bf39757526f6f274610650146a57abb86cd3b5d6a0c17b79ff42dfc7b_6"
-          },
-          "properties": {}
-        },
-        {
-          "ruleId": "cdf61b32-6a0f-3f6d-a1cc-c87c21f93437",
-          "kind": "fail",
-          "level": "warning",
-          "message": {
-            "text": "Use form.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data"
-          },
-          "locations": [
-            {
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "taskManager/views.py",
-                  "uriBaseId": "%SRCROOT%"
-                },
-                "region": {
-                  "startLine": 722,
-                  "startColumn": 16,
-                  "endLine": 722,
-                  "endColumn": 45,
-                  "snippet": {
-                    "text": "            if request.POST.get('last_name') != user.last_name:"
-                  }
-                }
-              }
-            }
-          ],
-          "fingerprints": {
-            "matchBasedId/v1": "7c4156270e98888e9ef10909ed733713e7951404c215d65fcd6c6432e097c41d109dbb6bf39757526f6f274610650146a57abb86cd3b5d6a0c17b79ff42dfc7b_4"
+            "matchBasedId/v1": "7c4156270e98888e9ef10909ed733713e7951404c215d65fcd6c6432e097c41d109dbb6bf39757526f6f274610650146a57abb86cd3b5d6a0c17b79ff42dfc7b_1"
           },
           "properties": {}
         },
@@ -3163,6 +3098,37 @@
           "properties": {}
         },
         {
+          "ruleId": "cdf61b32-6a0f-3f6d-a1cc-c87c21f93437",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "Use form.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 722,
+                  "startColumn": 16,
+                  "endLine": 722,
+                  "endColumn": 45,
+                  "snippet": {
+                    "text": "            if request.POST.get('last_name') != user.last_name:"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "7c4156270e98888e9ef10909ed733713e7951404c215d65fcd6c6432e097c41d109dbb6bf39757526f6f274610650146a57abb86cd3b5d6a0c17b79ff42dfc7b_4"
+          },
+          "properties": {}
+        },
+        {
           "ruleId": "034a9d8f-fce6-3e5e-afe9-6eaae3a4e3ac",
           "kind": "fail",
           "level": "warning",
@@ -3194,7 +3160,7 @@
           "properties": {}
         },
         {
-          "ruleId": "819c2faa-71b3-3ffc-a6c9-e46f10eee22b",
+          "ruleId": "2fbe92ea-8481-3a54-8394-8d876c75ba23",
           "kind": "fail",
           "level": "warning",
           "message": {
@@ -3208,19 +3174,50 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 726,
+                  "startLine": 724,
                   "startColumn": 16,
-                  "endLine": 726,
-                  "endColumn": 44,
+                  "endLine": 724,
+                  "endColumn": 41,
                   "snippet": {
-                    "text": "            if request.POST.get('password'):"
+                    "text": "            if request.POST.get('email') != user.email:"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "7c4156270e98888e9ef10909ed733713e7951404c215d65fcd6c6432e097c41d109dbb6bf39757526f6f274610650146a57abb86cd3b5d6a0c17b79ff42dfc7b_8"
+            "matchBasedId/v1": "7c4156270e98888e9ef10909ed733713e7951404c215d65fcd6c6432e097c41d109dbb6bf39757526f6f274610650146a57abb86cd3b5d6a0c17b79ff42dfc7b_6"
+          },
+          "properties": {}
+        },
+        {
+          "ruleId": "bf61413b-a33f-30e5-96cb-066c4c3304d5",
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "The password on 'user' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "taskManager/views.py",
+                  "uriBaseId": "%SRCROOT%"
+                },
+                "region": {
+                  "startLine": 727,
+                  "startColumn": 17,
+                  "endLine": 727,
+                  "endColumn": 64,
+                  "snippet": {
+                    "text": "                user.set_password(request.POST.get('password'))"
+                  }
+                }
+              }
+            }
+          ],
+          "fingerprints": {
+            "matchBasedId/v1": "0e9036d18231eacd2b4d19faee0b602d2d5bac888a41a0df4b58b413403cb9962da9d968a864a237adc89d9c156e636e4714c8276396e72f109736ad9b39f040_0"
           },
           "properties": {}
         },
@@ -3256,11 +3253,11 @@
           "properties": {}
         },
         {
-          "ruleId": "bf61413b-a33f-30e5-96cb-066c4c3304d5",
+          "ruleId": "819c2faa-71b3-3ffc-a6c9-e46f10eee22b",
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "The password on 'user' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information."
+            "text": "Use form.cleaned_data[] instead of request.POST[] after form.is_valid() has been executed to only access sanitized data"
           },
           "locations": [
             {
@@ -3270,19 +3267,19 @@
                   "uriBaseId": "%SRCROOT%"
                 },
                 "region": {
-                  "startLine": 727,
-                  "startColumn": 17,
-                  "endLine": 727,
-                  "endColumn": 64,
+                  "startLine": 726,
+                  "startColumn": 16,
+                  "endLine": 726,
+                  "endColumn": 44,
                   "snippet": {
-                    "text": "                user.set_password(request.POST.get('password'))"
+                    "text": "            if request.POST.get('password'):"
                   }
                 }
               }
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "0e9036d18231eacd2b4d19faee0b602d2d5bac888a41a0df4b58b413403cb9962da9d968a864a237adc89d9c156e636e4714c8276396e72f109736ad9b39f040_0"
+            "matchBasedId/v1": "7c4156270e98888e9ef10909ed733713e7951404c215d65fcd6c6432e097c41d109dbb6bf39757526f6f274610650146a57abb86cd3b5d6a0c17b79ff42dfc7b_8"
           },
           "properties": {}
         },
@@ -3322,7 +3319,7 @@
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "The password on 'userprofile.user' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n"
+            "text": "The password on 'userprofile.user' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information."
           },
           "locations": [
             {
@@ -3344,7 +3341,7 @@
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "cef3703ef2ae10aeb306e92afe7e6d5e308722c9b80610f8b266e23bff8394ff6ca23abe0e6e6e98b67d5677714bb50946e18fc6fe038a8e2b6b425aeb2e5eea_0"
+            "matchBasedId/v1": "306809be5aad1677630238661affc8214070d190ab5f9d49a96e8df0ff9655288922e8e03276947ddfb4a96c6d5898f43454f553ea99e6a07c5c3ef933c16247_0"
           },
           "properties": {}
         },
@@ -3353,7 +3350,7 @@
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "There is rarely a good reason to use @csrf_exempt as is used for `forgot_password`."
+            "text": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator."
           },
           "locations": [
             {
@@ -3375,7 +3372,7 @@
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "02c872c2087186e1a17b63c65dcbee4eeef456cb355f2242d8d1200c2cad1a270b91d78ceb71bf3545caa027b1072d9447625ab0d9d42da780bd5e9290a2ce45_0"
+            "matchBasedId/v1": "01b998981d26779a473b3fa43e8ec4f24250fb884b555d00ab622dfb471ad907ae6f83412ac2a76f093da8f91e914350cc9ffef991473f103f543b8073a0523e_0"
           },
           "properties": {}
         },
@@ -3384,7 +3381,7 @@
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "Detected usage of @csrf_exempt, which indicates that there is no CSRF token set for this route. This could lead to an attacker manipulating the user's account and exfiltration of private data. Instead, create a function without this decorator."
+            "text": "Function 'change_password' is missing a rate-limiting decorator.\nHigh volume traffic to this function could starve application\nresources. Consider adding rate limiting from a library such\nas 'django-ratelimit'.\n"
           },
           "locations": [
             {
@@ -3406,7 +3403,7 @@
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "03bd630d95562d80d2578dcaf8fcfc449b7223dabb31e9791d1a0b69f2476af2d8dc0c1771b5a26a4b9a9613f771f3253c0ffa7a08c9fcfbf34b0e34da935b99_0"
+            "matchBasedId/v1": "d3573d7174a38127f04d9b5722b4e23083d3945b3401354a9e0d5df6c9cbeab811c9ecb2a253f407187fa6d729cfa10fa23d1cd7071accf0e56b84b9ec14580b_0"
           },
           "properties": {}
         },
@@ -3415,7 +3412,7 @@
           "kind": "fail",
           "level": "warning",
           "message": {
-            "text": "The password on 'user' is being set without validating the password.\nCall django.contrib.auth.password_validation.validate_password() with\nvalidation functions before setting the password. See\nhttps://docs.djangoproject.com/en/3.0/topics/auth/passwords/\nfor more information.\n"
+            "text": "The password on 'user' is being set without validating the password. Call django.contrib.auth.password_validation.validate_password() with validation functions before setting the password. See https://docs.djangoproject.com/en/3.0/topics/auth/passwords/ for more information."
           },
           "locations": [
             {
@@ -3437,7 +3434,7 @@
             }
           ],
           "fingerprints": {
-            "matchBasedId/v1": "d9a0bf094a19621fbba5c4e91cd7fb7b75a165e1efb6c2a0d777152f9394edf2b838aad06912c5837cde1c4cb57885f436d26037aeeb36011893b1f826703c1e_0"
+            "matchBasedId/v1": "e3a2354ad8583f31679952078da59001fb3a94140660b755c37c44fde70e252c1c4761e5ba0868eff60690eed5978e99d935bc2b5843be44d47485fd981fb9ef_0"
           },
           "properties": {}
         },
